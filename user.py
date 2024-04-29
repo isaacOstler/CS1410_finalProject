@@ -99,4 +99,4 @@ class User:
         with open("users.csv", "w") as file:
             writer = csv.writer(file)
             for user in users:
-                writer.writerow([user.name.first, user.name.last, user.name.middle, user.rank, user.username, user.id, user.is_admin])
+                writer.writerow([user.name.first, user.name.last, user.name.middle, user.rank, user.username, user._hashed_password, user.id, user.is_admin])
