@@ -10,6 +10,15 @@ def test_user_init():
     assert user.id == "12345"
     assert user.isAdmin == True
 
+def test_user_init_no_id():
+    name = Name("John", "Doe")
+    user = User(name, "Captain", "johndoe", None, isAdmin=False)
+    assert user.name == name
+    assert user.rank == "Captain"
+    assert user.username == "johndoe"
+    assert user.id != None
+    assert user.isAdmin == False
+
 def test_user_str():
     name = Name("John", "Doe")
     user = User(name, "Captain", "johndoe", "12345", isAdmin=True)

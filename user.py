@@ -1,9 +1,10 @@
 from name import Name
 import csv
+import uuid
 
-''' A class that keeps track of a user.  Also has static methods for getting and saving users from a database'''
+''' A class that keeps track of a user.  Also has static methods for getting and saving users from a database.  If id is not specified a default GUID will be generated'''
 class User:
-    def __init__(self, name: Name, rank, username, id: str, isAdmin: bool = False):
+    def __init__(self, name: Name, rank, username, id: str = uuid.uuid4(), isAdmin: bool = False):
         if(not isinstance(name, Name)):
             raise TypeError("name must be a Name object")
         self.name = name
