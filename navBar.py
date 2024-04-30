@@ -18,9 +18,6 @@ class NavBar(BoxLayout):
             # enable admin buttons
             self.ids.form_creator.disabled = False
             self.ids.users.disabled = False
-
-        # highlight the current screen
-        print(App.get_running_app().root.current)
         
         if App.get_running_app().root.current == 'home_screen':
             self.ids.home.state = 'down'
@@ -30,6 +27,10 @@ class NavBar(BoxLayout):
 
         return super().on_kv_post(base_widget)
     
+    def goto_profile_screen(self):
+        App.get_running_app().root.current = 'profile_screen'
+        return
+
     def logout(self):
         App.get_running_app().signed_in_user = None
         self.username = ''

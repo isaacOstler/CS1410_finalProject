@@ -24,15 +24,15 @@ class MainApp(App):
         Builder.load_file("login_screen.kv")
         # Create the screen manager
         sm = ScreenManager(transition=FadeTransition(duration=0.18))
+        sm.add_widget(LoginScreen(name='login_screen'))
         sm.add_widget(ProfileScreen(name='profile_screen'))
         sm.add_widget(HomeScreen(name='home_screen'))
-        sm.add_widget(LoginScreen(name='login_screen'))
         return sm
 
 def main():
     Config.set('graphics', 'resizable', False)
-    Window.size = (800, 800)
-    #Window.size = (500, 200)
+    #Window.size = (800, 800)
+    Window.size = (500, 200)
     MainApp().run()
 
 if __name__ == "__main__":

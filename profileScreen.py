@@ -6,7 +6,7 @@ from name import Name
 from kivy.properties import StringProperty, BooleanProperty
 
 class ProfileScreen(Screen):
-    name = StringProperty('')
+    nameOfUser = StringProperty('')
     username = StringProperty('')
     rank = StringProperty('')
     is_admin = BooleanProperty(False)
@@ -15,11 +15,20 @@ class ProfileScreen(Screen):
     def on_pre_enter(self, *args):
         self.ids.navbar.updateUser(self)
         user = App.get_running_app().signed_in_user
-        self.name = f'{user.name.last}, {user.name.first}, {user.name.middle}'
+        self.nameOfUser = f'{user.name.last}, {user.name.first}, {user.name.middle}'
         self.username = user.username
         self.rank = user.rank
+        self.is_admin = user.is_admin
 
         return super().on_pre_enter(*args)
+    
+    def cancel_profile(self):
+        user = App.get_running_app().signed_in_user
+        self.ids.name.text = f'{user.name.last}, {user.name.first}, {user.name.middle}'
+        self.ids.username.text = user.username
+        self.ids.rank.text = user.rank
+        self.ids.admin.active = user.is_admin
+        self.message = ''
     
     def save_profile(self):
         user = App.get_running_app().signed_in_user
