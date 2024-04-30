@@ -13,6 +13,7 @@ packaging==23.2
 pillow==10.2.0
 platformdirs==4.2.0
 pluggy==1.4.0
+portalocker==2.8.2
 Pygments==2.17.2
 pytest==8.0.2
 reportlab==4.1.0
