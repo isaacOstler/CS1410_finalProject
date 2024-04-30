@@ -1,7 +1,14 @@
+from kivy.app import App
+from kivy.lang import Builder
 from user import User
 from name import Name
 
+class MainApp(App):
+    def build(self):
+        return Builder.load_file("main.kv")
+
 def main():
+    MainApp().run()
     while True:
         # try to login
         username = input("Enter your username: ")
