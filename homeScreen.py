@@ -5,4 +5,6 @@ from kivy.app import App
 from navBar import NavBar
 
 class HomeScreen(Screen):
-    pass
+    def on_pre_enter(self, *args):
+        self.ids.navbar.updateUser(self)
+        return super().on_pre_enter(*args)

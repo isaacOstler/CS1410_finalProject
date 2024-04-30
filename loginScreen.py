@@ -7,6 +7,14 @@ from kivy.app import App
 class LoginScreen(Screen):
     def get_logged_in_user(self):
         return self.logged_in_user
+    
+    def on_leave(self, *args):
+        self.ids.username.text = ""
+        self.ids.password.text = ""
+        self.ids.message.text = ""
+        self.ids.login_button.disabled = False
+        self.ids.login_button.text = "Login"
+        return super().on_leave(*args)
 
     def sign_in(self, username:str = "", password:str = ""):
         # bcrypt by it's nature takes a little bit to hash the password,
@@ -23,7 +31,7 @@ class LoginScreen(Screen):
                 self.ids.message.text = f"Welcome {user.name.first}!"
                 #change to the next screen
                 login_success = True
-                App.get_running_app().username = username
+                App.get_running_app().signed_in_user = user
             except ValueError as e:
                 #login failed
                 self.ids.message.text = str(e)
