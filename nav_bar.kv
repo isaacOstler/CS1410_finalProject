@@ -1,0 +1,25 @@
+<NavBar@BoxLayout>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, .2  # grey color
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+    orientation: 'horizontal'
+    size_hint: 1,.9
+    pos_hint: {'top_y': 0,'center_x': 0.5}
+
+    Label:
+        text: "Signed In As: " + root.username
+        font_size: 60
+    
+    Button:
+        id: logout_button
+        text: 'Logout'
+        font_size: 40
+        margin: 20
+        on_press: root.logout()
+        size_hint: .5,.8
+        pos_hint: {'center_y': 0.5,'center_x': 0.5}
+        background_color: 0, 0, 1, 1

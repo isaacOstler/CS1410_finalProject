@@ -2,8 +2,12 @@ from kivy.uix.screenmanager import Screen
 from user import User
 from kivy.clock import Clock
 from kivy.core.window import Window
+from kivy.app import App
 
 class LoginScreen(Screen):
+    def get_logged_in_user(self):
+        return self.logged_in_user
+
     def sign_in(self, username:str = "", password:str = ""):
         # bcrypt by it's nature takes a little bit to hash the password,
         # so we should let the user know it's going to take a second and that
@@ -19,6 +23,7 @@ class LoginScreen(Screen):
                 self.ids.message.text = f"Welcome {user.name.first}!"
                 #change to the next screen
                 login_success = True
+                App.get_running_app().username = username
             except ValueError as e:
                 #login failed
                 self.ids.message.text = str(e)
