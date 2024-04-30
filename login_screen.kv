@@ -1,0 +1,81 @@
+<HomeScreen>:
+    BoxLayout:
+        background_color: 1, 1, 1, 1
+        orientation: 'vertical'
+        size_hint: .9,.9
+        pos_hint: {'center_y': 0.5,'center_x': 0.5}
+
+        Label:
+            text: 'Welcome'
+            font_size: 60
+        
+        Button:
+            id: logout_button
+            text: 'Logout'
+            font_size: 40
+            margin: 20
+            on_press: root.logout()
+            size_hint: .5,.8
+            pos_hint: {'center_y': 0.5,'center_x': 0.5}
+            background_color: 0, 0, 1, 1
+
+        Label:
+            id: message
+            text: ''
+            font_size: 30
+            color: 1, 0, 0, 1
+<LoginScreen>:
+    BoxLayout:
+        background_color: 1, 1, 1, 1
+        orientation: 'vertical'
+        size_hint: .9,.9
+        pos_hint: {'center_y': 0.5,'center_x': 0.5}
+
+        Label:
+            text: 'Sign In'
+            font_size: 60
+        
+        BoxLayout
+            orientation: 'horizontal'
+            padding: 10
+            spacing: 10
+            Label:
+                text: 'Username'
+                font_size: 50
+            TextInput:
+                id: username
+                multiline: False
+                write_tab: False
+                font_size: 35
+                valign: 'center'
+        
+        BoxLayout
+            orientation: 'horizontal'
+            padding: 10
+            spacing: 10
+            Label:
+                text: 'Password'
+                font_size: 50
+            TextInput:
+                id: password
+                multiline: False
+                font_size: 35
+                write_tab: False
+                password: True
+                valign: 'center'
+
+        Button:
+            id: login_button
+            text: 'Login'
+            font_size: 40
+            margin: 20
+            on_press: root.sign_in(username.text, password.text)
+            size_hint: .5,.8
+            pos_hint: {'center_y': 0.5,'center_x': 0.5}
+            background_color: 0, 0, 1, 1
+        
+        Label:
+            id: message
+            text: ''
+            font_size: 30
+            color: 1, 0, 0, 1
