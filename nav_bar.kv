@@ -23,6 +23,7 @@
         Button:
             text: 'Home'
             id: home
+            on_press: app.root.current = 'home_screen'
             font_size: 32
             size_hint: .25,1
         
@@ -70,6 +71,8 @@
             
             Button:
                 text: 'Profile'
+                id: profile
+                on_press: app.root.current = 'profile_screen'
                 font_size: 20
                 size_hint: .5,1
 

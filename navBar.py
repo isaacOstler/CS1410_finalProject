@@ -18,6 +18,16 @@ class NavBar(BoxLayout):
             # enable admin buttons
             self.ids.form_creator.disabled = False
             self.ids.users.disabled = False
+
+        # highlight the current screen
+        print(App.get_running_app().root.current)
+        
+        if App.get_running_app().root.current == 'home_screen':
+            self.ids.home.state = 'down'
+
+        if App.get_running_app().root.current == 'profile_screen':
+            self.ids.profile.state = 'down'
+
         return super().on_kv_post(base_widget)
     
     def logout(self):
