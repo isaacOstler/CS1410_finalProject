@@ -24,8 +24,8 @@ class MainApp(App):
         Builder.load_file("login_screen.kv")
         # Create the screen manager
         sm = ScreenManager(transition=FadeTransition(duration=0.18))
-        sm.add_widget(HomeScreen(name='home_screen'))
         sm.add_widget(ProfileScreen(name='profile_screen'))
+        sm.add_widget(HomeScreen(name='home_screen'))
         sm.add_widget(LoginScreen(name='login_screen'))
         return sm
 
