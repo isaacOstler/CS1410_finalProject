@@ -9,3 +9,6 @@ class FormQuestion:
 
     def __str__(self) -> str:
         return f"Form_Question%%{self.label},{self.type},{self.defaultValue},{self.value}"
+
+    def __repr__(self) -> str:
+        return f"Form_Question%%{self.label},{self.type},{self.defaultValue},{self.value}"

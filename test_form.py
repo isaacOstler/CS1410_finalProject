@@ -33,8 +33,9 @@ def test_form():
     assert form.frequency == Frequency.WEEKLY
     assert form.questions[0].label == "Ventilator"
     assert form.questions[0].type == "boolean"
-    assert form.questions[0].defaultValue == 1
-    assert form.questions[0].value == 1
+    #assert form.questions[0].defaultValue == 1
+    #support dropped for default value on commit 36cb92a
+    assert form.questions[0].value == ""
     assert form.completed == False
     # data assigned should be within 1 second of now
     assert form.dateAssigned.timestamp() - form.dateAssigned.timestamp() < 1
