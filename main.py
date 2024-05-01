@@ -11,6 +11,10 @@ from navBar import NavBar
 from kivy.properties import StringProperty
 from user import User
 from name import Name
+from form import FormTemplate, Form, Frequency
+from formQuestion import FormQuestion
+from formManager import FormManager
+from apparatus import Apparatus
 
 class MainApp(App):
     user = StringProperty('')
@@ -30,10 +34,24 @@ class MainApp(App):
         return sm
 
 def main():
+    formManager = FormManager()
+    # formManager.add_form_template(FormTemplate(
+    #     "MA261 Daily",
+    #     Apparatus("MA261"),
+    #     Frequency.DAILY,
+    #     [
+    #         FormQuestion("Fuel Level", "percentage", 1),
+    #         FormQuestion("Oil Level", "percentage", 1),
+    #         FormQuestion("Coolant Level", "percentage", 1),
+    #         FormQuestion("Med Box", "boolean", 1),
+    #         FormQuestion("Oxygen Levels (PSI)", "number", 2300),
+    #     ]
+    # ))
+        
     Config.set('graphics', 'resizable', False)
     #Window.size = (800, 800)
     Window.size = (500, 200)
-    MainApp().run()
+    #MainApp().run()
 
 if __name__ == "__main__":
     main()
