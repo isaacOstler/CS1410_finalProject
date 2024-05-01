@@ -119,7 +119,9 @@
 
             StackLayout:
                 orientation: 'lr-tb'  # Left to right, top to bottom
-                size_hint: 1, 1
                 padding: 10, 10
                 spacing: 10
                 id: forms_list
+                size_hint_y: None
+                size_hint_x: 1
+                height: self.minimum_height

@@ -1,6 +1,6 @@
 from kivy.uix.screenmanager import Screen
 from user import User
-from kivy.properties import StringProperty, BooleanProperty
+from kivy.properties import StringProperty, BooleanProperty, ListProperty
 from kivy.app import App
 from navBar import NavBar
 from form import FormTemplate, Frequency, Form
@@ -27,10 +27,24 @@ class ViewFormScreen(Screen):
                 self.message = ""
             self.apparatus = self.form.apparatus.name
             self.ids.navbar.updateUser(self)
+            self.ids.scroll.scroll_y = 1
+
+            if self.form.completed:
+                self.ids.complete_button.disabled = True
+                self.ids.complete_button.text = "Completed"
+            else:
+                self.ids.complete_button.disabled = False
+                self.ids.complete_button.text = "Complete"
 
             self.ids.form_fields.clear_widgets()
             for question in self.form.questions:
-                self.ids.form_fields.add_widget(Text_FormField(self.form.completed, question))
+                # get index of question
+                index = self.form.questions.index(question)
+                match question.type:
+                    case "Good / Bad":
+                        self.ids.form_fields.add_widget(GoodBad_FormField(index % 2 == 0, self.form.completed, question))
+                    case _:
+                        self.ids.form_fields.add_widget(Text_FormField(index % 2 == 0, self.form.completed, question))
 
             return super().on_pre_enter(*args)
         except Exception as e:
@@ -51,14 +65,49 @@ class ViewFormScreen(Screen):
 class Text_FormField(BoxLayout):
     label = StringProperty('')
     value = StringProperty('')
-    disabled = BooleanProperty(False)  
+    disabled = BooleanProperty(False)
+    background_color = ListProperty([1, 1, 1, 0.05])
 
-    def __init__(self, disabled, question, **kwargs):
+    def __init__(self, show_background, disabled, question, **kwargs):
         super(Text_FormField, self).__init__(**kwargs)
         self.question = question
         self.label = question.label
         self.value = question.value
         self.disabled = disabled
+        self.background_color = [1,1,1,0.05] if show_background else [1,1,1,0]
 
     def update_value(self, value):
         self.question.value = value
+
+class GoodBad_FormField(BoxLayout):
+    label = StringProperty('')
+    value = StringProperty('')
+    disabled = BooleanProperty(False)
+    prompt = StringProperty('Select')
+    prompt2 = StringProperty('Or')
+    background_color = ListProperty([1, 1, 1, 0.05])
+
+    def __init__(self, show_background, disabled, question, **kwargs):
+        super(GoodBad_FormField, self).__init__(**kwargs)
+        self.question = question
+        self.label = question.label
+        self.value = question.value
+        self.disabled = disabled
+        self.background_color = [1,1,1,0.05] if show_background else [1,1,1,0]
+        self.update_button_color()
+
+    def update_button_color(self):
+        self.ids.good_button.background_color = [0, 1, 0, 1] if self.value == "Good" else [0.5, 0.5, 0.5, 1]
+        self.ids.bad_button.background_color = [1, 0, 0, 1] if self.value == "Bad" else [0.5, 0.5, 0.5, 1]
+        if self.value != "":
+            self.prompt = ""
+            self.prompt2 = ""
+        else:
+            self.prompt = "Select "
+            self.prompt2 = "Or"
+
+    def update_value(self, value):
+        if not self.disabled:
+            self.value = value
+            self.question.value = value
+            self.update_button_color()

@@ -95,19 +95,20 @@
 
         ScrollView:
             size_hint: 1, .8
-            pos_hint: {'center_y': 0.5,'center_x': 0.5}
+            do_scroll_y: True
 
             StackLayout:
                 orientation: 'lr-tb'  # Left to right, top to bottom
-                size_hint: 1, .8
                 padding: 10, 10
+                size_hint_y: None
+                size_hint_x: 1
+                height: self.minimum_height
                 spacing: 10
 
                 BoxLayout:
                     orientation: 'horizontal'
                     size_hint: 1, None
-                    padding: 10, 10
-                    spacing: 10
+                    height: 75
 
                     Label:
                         text: 'Form Name'
@@ -125,6 +126,7 @@
                 BoxLayout:
                     orientation: 'horizontal'
                     size_hint: 1, None
+                    height: 100
 
                     Label:
                         text: 'Form Frequency'
@@ -168,6 +170,7 @@
                 BoxLayout:
                     orientation: 'horizontal'
                     size_hint: 1, None
+                    height: 75
 
                     Label:
                         text: 'Apparatus'
@@ -191,11 +194,24 @@
                     font_size: 40
                     size_hint: 1, None
                     height: 20
-   
+
+                StackLayout:
+                    orientation: 'lr-tb'  # Left to right, top to bottom
+                    padding: 10, 10
+                    size_hint_y: None
+                    size_hint_x: 1
+                    height: self.minimum_height
+                    spacing: 10
+                    id: form_fields
+
                 BoxLayout:
-                    orientation: 'vertical'
+                    orientation: 'horizontal'
                     size_hint: 1, None
-                                  
+
+                    BoxLayout:
+                        orientation: 'horizontal'
+                        size_hint: .5, 1
+                    
                     Button:
                         text: 'Add Field'
                         font_size: 40
@@ -204,9 +220,6 @@
                         height: 60
                         on_release: root.add_field()
 
-                    StackLayout:
-                        orientation: 'lr-tb'  # Left to right, top to bottom
-                        size_hint: 1, 1
-                        padding: 10, 10
-                        spacing: 10
-                        id: form_fields
+                    BoxLayout:
+                        orientation: 'horizontal'
+                        size_hint: .5, 1
