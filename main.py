@@ -36,22 +36,34 @@ class MainApp(App):
 def main():
     formManager = FormManager()
     # formManager.add_form_template(FormTemplate(
-    #     "MA261 Daily",
+    #     "MA261 Weekly",
     #     Apparatus("MA261"),
-    #     Frequency.DAILY,
+    #     Frequency.WEEKLY,
     #     [
-    #         FormQuestion("Fuel Level", "percentage", 1),
-    #         FormQuestion("Oil Level", "percentage", 1),
-    #         FormQuestion("Coolant Level", "percentage", 1),
-    #         FormQuestion("Med Box", "boolean", 1),
-    #         FormQuestion("Oxygen Levels (PSI)", "number", 2300),
+    #         FormQuestion("Ventilator", "boolean", 1),
     #     ]
     # ))
-        
+    # formManager.add_form_template(FormTemplate(
+    #     "MA261 Monthly",
+    #     Apparatus("MA261"),
+    #     Frequency.MONTHLY,
+    #     [
+    #         FormQuestion("Suspension", "boolean", 1),
+    #     ]
+    # ))
+    # formManager.add_form_template(FormTemplate(
+    #     "MA261 Yearly",
+    #     Apparatus("MA261"),
+    #     Frequency.MONTHLY,
+    #     [
+    #         FormQuestion("State Inspection", "boolean", 1),
+    #     ]
+    # ))
+
     Config.set('graphics', 'resizable', False)
     #Window.size = (800, 800)
     Window.size = (500, 200)
-    #MainApp().run()
+    MainApp().run()
 
 if __name__ == "__main__":
     main()

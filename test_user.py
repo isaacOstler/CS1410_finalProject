@@ -2,6 +2,7 @@ from user import User
 from name import Name
 
 def test_user_init():
+    User.CONST_USER_FILE = './test/test_users.csv'
     name = Name("John", "Doe")
     user = User(name, "Captain", "johndoe", "password", is_admin=True, id="12345", hash_password=False)
     assert user.name == name
@@ -11,6 +12,7 @@ def test_user_init():
     assert user.is_admin == True
 
 def test_user_init_no_id():
+    User.CONST_USER_FILE = './test/test_users.csv'
     name = Name("John", "Doe")
     user = User(name, "Captain", "johndoe", "password", is_admin=False, hash_password=False)
     assert user.name == name
@@ -20,11 +22,13 @@ def test_user_init_no_id():
     assert user.is_admin == False
 
 def test_user_str():
+    User.CONST_USER_FILE = './test/test_users.csv'
     name = Name("John", "Doe")
     user = User(name, "Captain", "johndoe", "password", is_admin=True, id="12345", hash_password=False)
     assert str(user) == f"User #12345: John Doe, (Captain)"
 
 def test_user_csv_functionality():
+    User.CONST_USER_FILE = './test/test_users.csv'
     name = Name("John", "Doe")
     user = User(name, "Captain", "johndoe", "password", is_admin=True, id="12345", hash_password=False)
     User.save_user(user)

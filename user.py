@@ -6,6 +6,7 @@ import portalocker
 
 ''' A class that keeps track of a user.  Also has static methods for getting and saving users from a database.  If id is not specified a default GUID will be generated.  Passwords will be hashed using bcrypt.'''
 class User:
+    CONST_USER_FILE = 'users.csv'
     def __init__(self, name: Name, rank, username, password, is_admin: bool = False, id: str = "", hash_password: bool = True):
         if(not isinstance(name, Name)):
             raise TypeError("name must be a Name object")
@@ -50,7 +51,7 @@ class User:
     @staticmethod
     def get_all_users():
         ''' Reads the csv file users.csv and returns a list of users'''
-        with open("users.csv", "r") as file:
+        with open(User.CONST_USER_FILE, "r") as file:
             reader = csv.reader(file)
             users = []
             for row in reader:
@@ -86,7 +87,7 @@ class User:
         else:
             users.append(user)
         
-        with open("users.csv", "w") as file:
+        with open(User.CONST_USER_FILE, "w") as file:
             try:
                 portalocker.lock(file, portalocker.LOCK_EX)
                 writer = csv.writer(file)
@@ -111,7 +112,7 @@ class User:
                 break
         if(not userFound):
             raise ValueError("User not found")
-        with open("users.csv", "w") as file:
+        with open(User.CONST_USER_FILE, "w") as file:
             try:
                 portalocker.lock(file, portalocker.LOCK_EX)
                 writer = csv.writer(file)
