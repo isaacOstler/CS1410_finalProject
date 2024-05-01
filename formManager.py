@@ -23,6 +23,13 @@ class FormManager:
         '''Returns the forms list'''
         return self.forms
     
+    def get_form_by_id(self, form_id) -> Form:
+        '''Returns the form with the given form_id'''
+        for form in self.forms:
+            if form.form_id == form_id:
+                return form
+        raise Exception(f"Form {form_id} not found")
+    
     def set_forms(self, forms: list[Form]):
         '''Sets the forms list'''
         self.forms = forms
@@ -55,7 +62,7 @@ class FormManager:
         parsed_questions = []
         # parse the questions
         for question in form_template_questions.split("Form_Question%%"): # question delimiter is Form_Question%%
-            if(question == "[" or question == "]"):
+            if(question == "[" or question == "]" or question == "[]"):
                 continue # skip the first and last element
 
             label = question.split(",")[0]
@@ -94,7 +101,7 @@ class FormManager:
                     # Create a Form object from the row data and add it to the forms list
                     parsed_formTemplate = self._parse_csv_row_to_form_template(row)
                     form_assigned = datetime.fromisoformat(row[5])
-                    form_completed = row[6]
+                    form_completed = row[6] == "True"
                     form_id = row[7]
                     form = Form(parsed_formTemplate, form_assigned, form_completed, form_id)
                     if form not in loaded_forms:
@@ -134,7 +141,11 @@ class FormManager:
                 csv_writer = csv.writer(file)
                 for form in self.forms:
                     # Write the form data to the file
-                    csv_writer.writerow([form.name, form.apparatus, form.frequency.value, form.questions, form.template_id, datetime.isoformat(form.dateAssigned), form.completed, form.form_id])
+                    compiled_questions = "["
+                    for question in form.questions:
+                        compiled_questions += str(question) + ","
+                    compiled_questions += "]"
+                    csv_writer.writerow([form.name, form.apparatus, form.frequency.value, compiled_questions, form.template_id, datetime.isoformat(form.dateAssigned), form.completed, form.form_id])
             except Exception as e:
                 print(e)
             finally:

@@ -5,6 +5,7 @@ from kivy.config import Config
 from kivy.core.window import Window
 from kivy.uix.screenmanager import FadeTransition
 from loginScreen import LoginScreen
+from viewFormScreen import ViewFormScreen
 from homeScreen import HomeScreen
 from profileScreen import ProfileScreen
 from formEditorScreen import FormEditorScreen
@@ -26,8 +27,8 @@ class MainApp(App):
         App.get_running_app().signed_in_user = User.get_user_by_id("920c33e2-bd0b-4837-a3fa-7079884ad513")
         App.get_running_app().formManager = FormManager()
 
-        Builder.load_file("gui_form_template_list_item.kv")
         Builder.load_file("nav_bar.kv")
+        Builder.load_file("view_form_screen.kv")
         Builder.load_file("edit_form_template_screen.kv")
         Builder.load_file("profile_screen.kv")
         Builder.load_file("form_editor_screen.kv")
@@ -35,9 +36,10 @@ class MainApp(App):
         Builder.load_file("login_screen.kv")
         # Create the screen manager
         sm = ScreenManager(transition=FadeTransition(duration=0.18))
+        sm.add_widget(HomeScreen(name='home_screen'))
+        sm.add_widget(ViewFormScreen(name='view_form_screen'))
         sm.add_widget(FormEditorScreen(name='form_editor_screen'))
         sm.add_widget(EditFormTemplateScreen(name='edit_form_template_screen'))
-        sm.add_widget(HomeScreen(name='home_screen'))
         sm.add_widget(LoginScreen(name='login_screen'))
         sm.add_widget(ProfileScreen(name='profile_screen'))
         return sm

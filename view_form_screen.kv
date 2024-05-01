@@ -1,0 +1,117 @@
+<Text_FormField@BoxLayout>:
+    orientation: 'horizontal'
+    size_hint_y: None
+    height: 50
+
+    Label:
+        text: root.label
+        pos_hint: {'center_y': 0.5}
+        size_hint_x: 0.5
+        width: 200
+
+    TextInput:
+        size_hint: 0.5, None
+        height: 60
+        font_size: 40
+        multiline: False
+        text: root.value
+        disabled: root.disabled
+        write_tab: False
+        on_text: root.update_value(self.text)
+
+<ViewFormScreen>:
+    name: 'view_form_screen'
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint: 1, 1
+
+        NavBar:
+            id: navbar
+            size_hint: 1, .1
+            pos_hint: {'center_y': 0.5,'center_x': 0.5}
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, .01
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, None
+
+            Label:
+                text: root.title
+                font_size: 50
+                size_hint: 0.7, None
+                pos_hint: {'center_y': 0.5}
+                height: 50
+
+            Label:
+                text: root.subtitle
+                font_size: 40
+                pos_hint: {'center_y': 0.5}
+                color: 0.5, 0.5, 0.5, 1
+                size_hint_y: None
+            
+            Button:
+                text: 'Mark Complete'
+                size_hint: 0.3, None
+                pos_hint: {'center_y': 0.5}
+                height: 50
+                background_color: 0, 1, 0, 1
+                on_press: root.complete()
+
+            Button:
+                text: 'Save and Exit'
+                size_hint: 0.3, None
+                pos_hint: {'center_y': 0.5}
+                height: 50
+                background_color: 0, 0.5, 1, 1
+                on_press: root.save_and_close()
+
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint: 0.1, 1
+        
+        Label:
+            text: root.message
+            font_size: 40
+            size_hint: 1, None
+            color: 1, 0, 0, 1
+            pos_hint: {'center_y': 0.5}
+            height: 50
+
+        ScrollView:
+            size_hint: 1, 1
+            pos_hint: {'center_y': 0.5,'center_x': 0.5}
+
+            StackLayout:
+                orientation: 'lr-tb'  # Left to right, top to bottom
+                size_hint: 1, 1
+                padding: 10, 10
+                spacing: 10
+                id: forms_list
+
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: 50
+
+                    Label:
+                        text: 'Apparatus'
+                        size_hint_x: 0.5
+                        width: 200
+
+                    TextInput:
+                        id: rank
+                        size_hint_x: 0.5
+                        width: 400
+                        multiline: False
+                        text: root.apparatus
+                        disabled: True
+
+                StackLayout:
+                    orientation: 'lr-tb'  # Left to right, top to bottom
+                    size_hint: 1, 1
+                    padding: 10, 10
+                    spacing: 10
+                    id: form_fields
