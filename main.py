@@ -43,12 +43,19 @@ class MainApp(App):
         return sm
 
 def main():
+    # formManager = FormManager()
     # formManager.add_form_template(FormTemplate(
     #     "MA261 Weekly",
     #     Apparatus("MA261"),
     #     Frequency.WEEKLY,
     #     [
     #         FormQuestion("Ventilator", "boolean", 1),
+    #         FormQuestion("Oxygen", "boolean", 1),
+    #         FormQuestion("Suction", "boolean", 1),
+    #         FormQuestion("IV Pump", "boolean", 1),
+    #         FormQuestion("Defib", "boolean", 1),
+    #         FormQuestion("Monitor", "boolean", 1),
+    #         FormQuestion("SPO2", "boolean", 1),
     #     ]
     # ))
     # formManager.add_form_template(FormTemplate(

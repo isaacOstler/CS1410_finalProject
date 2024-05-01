@@ -32,6 +32,13 @@ class FormManager:
         '''Returns the form templates list'''
         return self.formTemplates
     
+    def get_form_template_by_id(self, template_id) -> FormTemplate:
+        '''Returns the form template with the given template_id'''
+        for form_template in self.formTemplates:
+            if form_template.template_id == template_id:
+                return form_template
+        raise Exception(f"Form template {template_id} not found")
+    
     def set_form_templates(self, form_templates: list[FormTemplate]):
         '''Sets the form templates list'''
         self.formTemplates = form_templates
@@ -136,6 +143,20 @@ class FormManager:
     def add_form_template(self, form_template: FormTemplate):
         '''Adds a form template to the form templates list'''
         self.formTemplates.append(form_template)
+        self.save_form_templates_to_file_system()
+
+    def write_form_template(self, form_template: FormTemplate):
+        '''Writes a form template to the form templates list, and saves to file system.  Will overwrite existing form template with same template_id'''
+        # Check if the form template already exists in the form templates list
+        found = False
+        for f in self.formTemplates:
+            if f.template_id == form_template.template_id:
+                # Overwrite the existing form template
+                f = form_template
+                found = True
+        # Add the form template to the form templates list
+        if not found:
+            self.formTemplates.append(form_template)
         self.save_form_templates_to_file_system()
 
     def write_form(self, form: Form):

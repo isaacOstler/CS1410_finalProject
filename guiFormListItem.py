@@ -17,7 +17,7 @@ class GUI_FormTemplateListItem(BoxLayout):
         self.confirm_delete = False
 
     def edit_form(self):
-        App.get_running_app().editing_form_template = self.template_id
+        App.get_running_app().editing_form_template_id = self.template_id
         App.get_running_app().root.current = 'edit_form_template_screen'
 
     def delete_form(self):
