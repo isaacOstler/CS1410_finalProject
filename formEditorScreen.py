@@ -5,7 +5,7 @@ from kivy.app import App
 from navBar import NavBar
 from guiFormListItem import GUI_FormTemplateListItem
 
-class HomeScreen(Screen):
+class FormEditorScreen(Screen):
     def on_pre_enter(self, *args):
         # get formManager from app
         formManager = App.get_running_app().formManager
@@ -15,9 +15,8 @@ class HomeScreen(Screen):
         return super().on_pre_enter(*args)
     
     def _draw_forms(self):
-        return
         formManager = App.get_running_app().formManager
         self.ids.forms_list.clear_widgets()
-        forms = formManager.get_forms()
+        forms = formManager.get_form_templates()
         for form in forms:
             self.ids.forms_list.add_widget(GUI_FormTemplateListItem(form))

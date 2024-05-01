@@ -1,5 +1,5 @@
-LA261 Daily,LA261,1,"[Form_Question%%Fuel Level,percentage,1,1, Form_Question%%Oil Level,percentage,1,1, Form_Question%%Coolant Level,percentage,1,1, Form_Question%%Hydraulic Fluid Level,percentage,1,1, Form_Question%%Battery Voltage,voltage,1,1, Form_Question%%Engine Hours,hours,1,1]]]",e245b5ec-011a-4cdb-aef0-01cb96b0d956
-MA261 Daily,MA261,1,"[Form_Question%%Fuel Level,percentage,1,1, Form_Question%%Oil Level,percentage,1,1, Form_Question%%Coolant Level,percentage,1,1, Form_Question%%Med Box,boolean,1,1, Form_Question%%Oxygen Levels (PSI),number,2300,2300]]",b32894b5-83af-483e-9fcc-84f0a93441e7
-MA261 Weekly,MA261,2,"[Form_Question%%Ventilator,boolean,1,1]",a7d8ce9e-75f4-40be-a159-1175ba224053
-MA261 Monthly,MA261,3,"[Form_Question%%Suspension,boolean,1,1]",fdf79e16-d493-4936-b9ad-584e07f73e2b
-MA261 Yearly,MA261,3,"[Form_Question%%State Inspection,boolean,1,1]",82f3e135-a254-4173-bd89-b75640911739
+Ladder 261 Daily Check,LA261,1,"[Form_Question%%Fuel Level,percentage,1,1, Form_Question%%Oil Level,percentage,1,1, Form_Question%%Coolant Level,percentage,1,1, Form_Question%%Hydraulic Fluid Level,percentage,1,1, Form_Question%%Battery Voltage,voltage,1,1, Form_Question%%Engine Hours,hours,1,1]]]",e245b5ec-011a-4cdb-aef0-01cb96b0d956
+Medic Ambulance 261 Daily Check,MA261,1,"[Form_Question%%Fuel Level,percentage,1,1, Form_Question%%Oil Level,percentage,1,1, Form_Question%%Coolant Level,percentage,1,1, Form_Question%%Med Box,boolean,1,1, Form_Question%%Oxygen Levels (PSI),number,2300,2300]]",b32894b5-83af-483e-9fcc-84f0a93441e7
+Medic Ambulance 261 Weekly Check,MA261,2,"[Form_Question%%Ventilator,boolean,1,1]",a7d8ce9e-75f4-40be-a159-1175ba224053
+Medic Ambulance 261 Monthly Check,MA261,3,"[Form_Question%%Suspension,boolean,1,1]",fdf79e16-d493-4936-b9ad-584e07f73e2b
+Medic Ambulnace 261 Yearly Check,MA261,3,"[Form_Question%%State Inspection,boolean,1,1]",82f3e135-a254-4173-bd89-b75640911739

@@ -1,0 +1,60 @@
+<GUI_FormTemplateListItem@BoxLayout>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, .1  # grey color
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+    orientation: 'horizontal'
+    size_hint: 1, None
+    pos_hint: {'top_y': 0,'center_x': 0.5}
+    
+    Label:
+        text: root.form_name
+        size_hint: .5,1
+        pos_hint: {'center_y': 0.5}
+        font_size: 35
+        halign: 'center'
+        valign: 'center'
+
+    Label:
+        text: root.form_frequency
+        size_hint: .2,1
+        pos_hint: {'center_y': 0.5}
+        font_size: 30
+        halign: 'center'
+        valign: 'center'
+
+    Label:
+        text: root.form_apparatus
+        size_hint: .2,1
+        pos_hint: {'center_y': 0.5}
+        font_size: 30
+        halign: 'center'
+        valign: 'center'
+
+    Button:
+        text: 'Edit'
+        size_hint: .1,.6
+        pos_hint: {'center_y': 0.5}
+        font_size: 30
+        halign: 'center'
+        valign: 'center'
+        on_press: root.edit_form()
+
+    BoxLayout:
+        size_hint: .01,1
+
+    Button:
+        text: 'Delete'
+        id: delete_button
+        size_hint: .1,.6
+        pos_hint: {'center_y': 0.5}
+        font_size: 30
+        halign: 'center'
+        valign: 'center'
+        on_press: root.delete_form()
+
+    BoxLayout:
+        size_hint: .01,1

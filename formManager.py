@@ -152,6 +152,15 @@ class FormManager:
             self.forms.append(form)
         self.save_form_to_file_system()
 
+    def delete_form_template(self, template_id):
+        '''Deletes a form template from the form templates list with the given template_id'''
+        for form_template in self.formTemplates:
+            if form_template.template_id == template_id:
+                self.formTemplates.remove(form_template)
+                self.save_form_templates_to_file_system()
+                return
+        raise Exception(f"Form template {template_id} not found, cannot delete")
+
     def delete_form(self, form_id):
         '''Deletes a form from the forms list with the given form_id'''
         for form in self.forms:
