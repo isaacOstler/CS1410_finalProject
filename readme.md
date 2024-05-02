@@ -22,3 +22,6 @@ When you clone this repo, a default admin user is already setup.  The username i
 - User Management
 - Passwords hashed and salted using bcrypt
 - Record Management
+
+## UML diagram
+![final_project_uml](https://github.com/isaacOstler/CS1410_finalProject/assets/30113240/1df3f262-db7d-4286-94a3-2a603c3961e9)
