@@ -102,8 +102,9 @@ class FormManager:
                     parsed_formTemplate = self._parse_csv_row_to_form_template(row)
                     form_assigned = datetime.fromisoformat(row[5])
                     form_completed = row[6] == "True"
-                    form_id = row[7]
-                    form = Form(parsed_formTemplate, form_assigned, form_completed, form_id)
+                    form_completed_by = row[7]
+                    form_id = row[8]
+                    form = Form(parsed_formTemplate, form_assigned, form_completed, form_completed_by, form_id)
                     if form not in loaded_forms:
                         loaded_forms.append(form)
             except Exception as e:
@@ -145,7 +146,7 @@ class FormManager:
                     for question in form.questions:
                         compiled_questions += str(question) + ","
                     compiled_questions += "]"
-                    csv_writer.writerow([form.name, form.apparatus, form.frequency.value, compiled_questions, form.template_id, datetime.isoformat(form.dateAssigned), form.completed, form.form_id])
+                    csv_writer.writerow([form.name, form.apparatus, form.frequency.value, compiled_questions, form.template_id, datetime.isoformat(form.dateAssigned), form.completed, form.completed_by, form.form_id])
             except Exception as e:
                 print(e)
             finally:

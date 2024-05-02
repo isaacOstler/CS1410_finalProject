@@ -22,7 +22,7 @@ class ViewFormScreen(Screen):
             human_readable_date = self.form.dateAssigned.strftime("%m/%d/%Y")
             self.subtitle = f"{human_readable_date} - Locked" if self.form.completed else human_readable_date
             if self.form.completed:
-                self.message = "This form has been submitted and is locked."
+                self.message = f"This form has been submitted and is locked.  Submitted by: {User.get_user_by_id(self.form.completed_by).username}"
             else:
                 self.message = ""
             self.apparatus = self.form.apparatus.name
@@ -54,10 +54,11 @@ class ViewFormScreen(Screen):
     def save_and_close(self):
         formManager = App.get_running_app().formManager
         formManager.save_form_to_file_system()
-        App.get_running_app().root.current = 'home_screen'
+        App.get_running_app().root.current = App.get_running_app().viewing_form_from
 
     def complete(self):
         self.form.completed = True
+        self.form.completed_by = App.get_running_app().signed_in_user.id
         formManager = App.get_running_app().formManager
         formManager.save_form_to_file_system()
         App.get_running_app().root.current = 'home_screen'

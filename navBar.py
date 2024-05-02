@@ -22,8 +22,14 @@ class NavBar(BoxLayout):
         if App.get_running_app().root.current == 'home_screen':
             self.ids.home.state = 'down'
 
+        if App.get_running_app().root.current == 'records_screen':
+            self.ids.records.state = 'down'
+
         if App.get_running_app().root.current == 'profile_screen':
             self.ids.profile.state = 'down'
+
+        if App.get_running_app().root.current == 'users_screen':
+            self.ids.users.state = 'down'
 
         if App.get_running_app().root.current == 'form_editor_screen':
             self.ids.form_editor.state = 'down'
@@ -32,6 +38,18 @@ class NavBar(BoxLayout):
     
     def goto_profile_screen(self):
         App.get_running_app().root.current = 'profile_screen'
+        return
+
+    def goto_home_screen(self):
+        App.get_running_app().root.current = 'home_screen'
+        return
+
+    def goto_records_screen(self):
+        App.get_running_app().root.current = 'records_screen'
+        return
+    
+    def goto_users_screen(self):
+        App.get_running_app().root.current = 'users_screen'
         return
 
     def goto_form_editor_screen(self):

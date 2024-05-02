@@ -9,7 +9,9 @@ from viewFormScreen import ViewFormScreen
 from homeScreen import HomeScreen
 from profileScreen import ProfileScreen
 from formEditorScreen import FormEditorScreen
+from usersScreen import UsersScreen
 from editFormTemplateScreen import EditFormTemplateScreen
+from recordsScreen import RecordsScreen
 from navBar import NavBar
 from kivy.properties import StringProperty
 from user import User
@@ -28,6 +30,8 @@ class MainApp(App):
         App.get_running_app().formManager = FormManager()
 
         Builder.load_file("nav_bar.kv")
+        Builder.load_file("users_screen.kv")
+        Builder.load_file("records_screen.kv")
         Builder.load_file("view_form_screen.kv")
         Builder.load_file("edit_form_template_screen.kv")
         Builder.load_file("profile_screen.kv")
@@ -36,6 +40,8 @@ class MainApp(App):
         Builder.load_file("login_screen.kv")
         # Create the screen manager
         sm = ScreenManager(transition=FadeTransition(duration=0.18))
+        sm.add_widget(UsersScreen(name='users_screen'))
+        sm.add_widget(RecordsScreen(name='records_screen'))
         sm.add_widget(HomeScreen(name='home_screen'))
         sm.add_widget(ViewFormScreen(name='view_form_screen'))
         sm.add_widget(FormEditorScreen(name='form_editor_screen'))

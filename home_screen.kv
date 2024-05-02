@@ -19,6 +19,13 @@
         valign: 'center'
 
     Label:
+        text: root.form_date
+        size_hint: .2,1
+        pos_hint: {'center_y': 0.5}
+        font_size: 25
+        color: 0.75, 0.75, 0.75, 1
+
+    Label:
         text: root.form_apparatus
         size_hint: .1,1
         pos_hint: {'center_y': 0.5}
@@ -73,6 +80,9 @@
             Label:
                 text: 'Form Name'
                 size_hint: 0.45, None
+            Label:
+                text: 'Date'
+                size_hint: .3,1
             Label:
                 text: 'Apparatus'
                 size_hint: 0.2, None

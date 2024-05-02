@@ -112,6 +112,11 @@
                 pos_hint: {'center_y': 0.5}
                 color: 0.5, 0.5, 0.5, 1
                 size_hint_y: None
+                size_hint_x: 0.2
+
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint: 0.1, 1
 
             Button:
                 text: 'Return'
@@ -127,7 +132,7 @@
         
         Label:
             text: root.message
-            font_size: 40
+            font_size: 30
             size_hint: 1, None
             color: 1, 0, 0, 1
             pos_hint: {'center_y': 0.5}

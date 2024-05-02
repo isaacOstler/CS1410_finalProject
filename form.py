@@ -31,10 +31,11 @@ class FormTemplate:
         return f"{self.name},{self.apparatus},{self.frequency},{self.questions},{self.template_id}"
 
 class Form(FormTemplate):
-    def __init__(self, formTemplate: FormQuestion, dateAssigned: datetime = None, completed: bool = False, form_id = None,):
+    def __init__(self, formTemplate: FormQuestion, dateAssigned: datetime = None, completed: bool = False, completed_by: str = "", form_id = None):
         super().__init__(formTemplate.name, formTemplate.apparatus, formTemplate.frequency, formTemplate.questions, formTemplate.template_id)
         self.completed = completed
         self.dateAssigned = dateAssigned
+        self.completed_by = completed_by
         if(form_id == None):
             self.form_id = uuid4()
         else:

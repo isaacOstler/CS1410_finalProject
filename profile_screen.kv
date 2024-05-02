@@ -36,6 +36,7 @@
                     size_hint_x: None
                     width: 400
                     multiline: False
+                    write_tab: False
                     text: root.nameOfUser
 
             BoxLayout:
@@ -52,6 +53,7 @@
                     id: username
                     size_hint_x: None
                     width: 400
+                    write_tab: False
                     multiline: False
                     text: root.username
 
@@ -70,6 +72,7 @@
                     id: rank
                     size_hint_x: None
                     width: 400
+                    write_tab: False
                     multiline: False
                     text: root.rank
 
@@ -94,6 +97,60 @@
                     size_hint_x: None
                     width: 50
                     active: root.is_admin
+
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint_x: 1
+                size_hint_y: None
+                height: 50
+
+                Label:
+                    text: 'New Password'
+                    size_hint_x: None
+                    width: 200
+
+                TextInput:
+                    id: password
+                    write_tab: False
+                    size_hint_x: None
+                    width: 500
+                    multiline: False
+                    password: True
+                    text: ""
+
+                Button:
+                    text: 'Show'
+                    size_hint_x: None
+                    width: 100
+                    on_press: password.password = False
+                    on_release: password.password = True
+
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint_x: 1
+                size_hint_y: None
+                height: 50
+
+                Label:
+                    text: 'Verify'
+                    size_hint_x: None
+                    width: 200
+
+                TextInput:
+                    id: verify
+                    size_hint_x: None
+                    width: 500
+                    multiline: False
+                    write_tab: False
+                    password: True
+                    text: ""
+
+                Button:
+                    text: 'Show'
+                    size_hint_x: None
+                    width: 100
+                    on_press: verify.password = False
+                    on_release: verify.password = True
 
             BoxLayout:
                 orientation: 'horizontal'

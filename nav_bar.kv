@@ -23,13 +23,14 @@
         Button:
             text: 'Home'
             id: home
-            on_press: app.root.current = 'home_screen'
+            on_press: root.goto_home_screen()
             font_size: 32
             size_hint: .25,1
         
         Button:
             text: 'Records'
             id: records
+            on_press: root.goto_records_screen()
             font_size: 32
             size_hint: .25,1
         
@@ -45,6 +46,7 @@
             id: users
             font_size: 32
             size_hint: .25,1
+            on_press: root.goto_users_screen()
 
     BoxLayout:
         orientation: 'horizontal'

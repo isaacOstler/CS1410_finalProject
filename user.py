@@ -31,6 +31,10 @@ class User:
         '''Saves the user to the database, equivalent to User.save_user(user)'''
         return User.save_user(self, callback)
     
+    def set_password(self, password):
+        '''Sets the password for the user'''
+        self._hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+    
     @staticmethod 
     def sign_in(username, password):
         '''Returns a user object if the username and password match a user in the database'''

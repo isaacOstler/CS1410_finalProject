@@ -47,6 +47,14 @@ class ProfileScreen(Screen):
         except IndexError as e:
             self.message = 'Names must be in the format "Last, First" or "Last, First, Middle"'
             return
+        
+        if self.ids.password.text != self.ids.verify.text:
+            self.message = 'Passwords do not match'
+            return
+
+        if len(self.ids.password.text) > 0:
+            user.set_password(self.ids.password.text)
+
         self.message = ''
         user.name = newName
         user.username = self.ids.username.text
@@ -55,3 +63,5 @@ class ProfileScreen(Screen):
         user.save()
         self.ids.navbar.updateUser(self)
         self.manager.current = 'home_screen'
+        self.ids.password.text = ''
+        self.ids.verify.text = ''
