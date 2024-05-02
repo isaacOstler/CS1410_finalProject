@@ -125,7 +125,12 @@ class FormManager:
                 csv_writer = csv.writer(file)
                 for form_template in self.formTemplates:
                     # Write the form template data to the file
-                    csv_writer.writerow([form_template.name, form_template.apparatus, form_template.frequency.value, form_template.questions, form_template.template_id])
+                    compiled_questions = "["
+                    for question in form_template.questions:
+                        compiled_questions += str(question) + ","
+                    compiled_questions += "]" # remove the last comma
+
+                    csv_writer.writerow([form_template.name, form_template.apparatus, form_template.frequency.value, compiled_questions, form_template.template_id])
             except Exception as e:
                 print(e)
             finally:

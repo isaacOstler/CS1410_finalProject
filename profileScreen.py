@@ -14,7 +14,7 @@ class ProfileScreen(Screen):
 
     def on_pre_enter(self, *args):
         self.ids.navbar.updateUser(self)
-        user = App.get_running_app().signed_in_user
+        user = App.get_running_app().profile_edit_user
         self.nameOfUser = f'{user.name.last}, {user.name.first}, {user.name.middle}'
         self.username = user.username
         self.rank = user.rank
@@ -23,7 +23,7 @@ class ProfileScreen(Screen):
         return super().on_pre_enter(*args)
     
     def cancel_profile(self):
-        user = App.get_running_app().signed_in_user
+        user = App.get_running_app().profile_edit_user
         self.ids.name.text = f'{user.name.last}, {user.name.first}, {user.name.middle}'
         self.ids.username.text = user.username
         self.ids.rank.text = user.rank
@@ -31,7 +31,7 @@ class ProfileScreen(Screen):
         self.message = ''
     
     def save_profile(self):
-        user = App.get_running_app().signed_in_user
+        user = App.get_running_app().profile_edit_user
         newName = user.name
         try:
             #if the text has one comma
@@ -62,6 +62,6 @@ class ProfileScreen(Screen):
         user.is_admin = self.ids.admin.active
         user.save()
         self.ids.navbar.updateUser(self)
-        self.manager.current = 'home_screen'
+        self.manager.current = 'users_screen'
         self.ids.password.text = ''
         self.ids.verify.text = ''

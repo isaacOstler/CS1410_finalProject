@@ -26,7 +26,7 @@ class MainApp(App):
     
     def build(self):
         #App.get_running_app().signed_in_user = User.get_user_by_id("b78da9da-e885-4ccf-8718-3372577fde4c")
-        App.get_running_app().signed_in_user = User.get_user_by_id("920c33e2-bd0b-4837-a3fa-7079884ad513")
+        #App.get_running_app().signed_in_user = User.get_user_by_id("920c33e2-bd0b-4837-a3fa-7079884ad513")
         App.get_running_app().formManager = FormManager()
 
         Builder.load_file("nav_bar.kv")
@@ -40,52 +40,20 @@ class MainApp(App):
         Builder.load_file("login_screen.kv")
         # Create the screen manager
         sm = ScreenManager(transition=FadeTransition(duration=0.18))
+        sm.add_widget(LoginScreen(name='login_screen'))
         sm.add_widget(UsersScreen(name='users_screen'))
         sm.add_widget(RecordsScreen(name='records_screen'))
         sm.add_widget(HomeScreen(name='home_screen'))
         sm.add_widget(ViewFormScreen(name='view_form_screen'))
         sm.add_widget(FormEditorScreen(name='form_editor_screen'))
         sm.add_widget(EditFormTemplateScreen(name='edit_form_template_screen'))
-        sm.add_widget(LoginScreen(name='login_screen'))
         sm.add_widget(ProfileScreen(name='profile_screen'))
         return sm
 
 def main():
-    # formManager = FormManager()
-    # formManager.add_form_template(FormTemplate(
-    #     "MA261 Weekly",
-    #     Apparatus("MA261"),
-    #     Frequency.WEEKLY,
-    #     [
-    #         FormQuestion("Ventilator", "boolean", 1),
-    #         FormQuestion("Oxygen", "boolean", 1),
-    #         FormQuestion("Suction", "boolean", 1),
-    #         FormQuestion("IV Pump", "boolean", 1),
-    #         FormQuestion("Defib", "boolean", 1),
-    #         FormQuestion("Monitor", "boolean", 1),
-    #         FormQuestion("SPO2", "boolean", 1),
-    #     ]
-    # ))
-    # formManager.add_form_template(FormTemplate(
-    #     "MA261 Monthly",
-    #     Apparatus("MA261"),
-    #     Frequency.MONTHLY,
-    #     [
-    #         FormQuestion("Suspension", "boolean", 1),
-    #     ]
-    # ))
-    # formManager.add_form_template(FormTemplate(
-    #     "MA261 Yearly",
-    #     Apparatus("MA261"),
-    #     Frequency.MONTHLY,
-    #     [
-    #         FormQuestion("State Inspection", "boolean", 1),
-    #     ]
-    # ))
-
     Config.set('graphics', 'resizable', False)
-    Window.size = (800, 800)
-    #Window.size = (500, 200)
+    #Window.size = (800, 800)
+    Window.size = (500, 200)
     MainApp().run()
 
 if __name__ == "__main__":
