@@ -24,4 +24,4 @@ When you clone this repo, a default admin user is already setup.  The username i
 - Record Management
 
 ## UML diagram
-![final_project_uml](https://github.com/isaacOstler/CS1410_finalProject/assets/30113240/1df3f262-db7d-4286-94a3-2a603c3961e9)
+![final_project_UML](https://github.com/isaacOstler/CS1410_finalProject/assets/30113240/e3460f7d-2235-47e0-83f8-df877d706a82)
