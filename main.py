@@ -22,8 +22,6 @@ from formManager import FormManager
 from apparatus import Apparatus
 
 class MainApp(App):
-    user = StringProperty('')
-    
     def build(self):
         #App.get_running_app().signed_in_user = User.get_user_by_id("b78da9da-e885-4ccf-8718-3372577fde4c")
         #App.get_running_app().signed_in_user = User.get_user_by_id("920c33e2-bd0b-4837-a3fa-7079884ad513")
